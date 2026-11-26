@@ -134,7 +134,6 @@
 
   /* ---------- Grid & placeholders ---------- */
   .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
-  @media (min-width: 640px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   .card { text-align: left; opacity: 0; animation: rise .7s ease forwards; }
   .ph {
     position: relative; aspect-ratio: 3 / 4; border-radius: 20px; overflow: hidden;
@@ -227,37 +226,13 @@
 
   footer { text-align: center; margin-top: 48px; font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 15px; }
 
-  /* ---------- Desktop ---------- */
-  @media (min-width: 900px) {
-    .hero { min-height: 86vh; }
-    .brand { font-size: 168px; }
-    .tagline { max-width: 440px; font-size: 28px; }
-    .catalog { max-width: 1200px; margin: 0 auto; padding: 72px 40px 0; }
-    .section-title h2 { font-size: 52px; }
-    .toolbar { margin: 0 -40px; padding: 16px 40px 8px; }
-    .bar { max-width: 680px; margin: 0 auto; }
-    .tabs { justify-content: center; gap: 36px; }
-    .tab { font-size: 24px; }
-    .summary { padding: 14px 2px 24px; }
-    .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 44px 24px; }
-    .card { transition: transform .4s ease; }
-    .card:hover { transform: translateY(-4px); }
+  /* ---------- Desktop: the phone layout in a centered column, empty sides ---------- */
+  @media (min-width: 640px) {
+    .hero, .catalog { max-width: 480px; margin: 0 auto; }
+    .hero { border-radius: 0 0 36px 36px; }
+    .sheet:not(.modal) { left: 50%; right: auto; width: 480px; margin-left: -240px; }
     .card:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .icon-btn:hover, .opt:hover { border-color: var(--gold); }
-    .primary:hover { background: var(--navy-soft); }
-
-    /* product card becomes a centered two-column window */
-    .sheet:not(.modal) {
-      top: 50%; bottom: auto; left: 50%; right: auto; width: min(920px, 92vw); max-height: 86vh;
-      display: grid; grid-template-columns: 1fr 1fr; border-radius: 28px; padding-bottom: 0;
-      opacity: 0; transform: translate(-50%, -46%) scale(.96);
-      transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .3s; box-shadow: 0 30px 80px -30px rgba(30,42,68,.55);
-    }
-    .open .sheet:not(.modal) { opacity: 1; transform: translate(-50%, -50%); }
-    .sheet > .ph { aspect-ratio: auto; min-height: 540px; height: 100%; }
-    .sheet:not(.modal) .sheet-body { padding: 48px 40px 40px; align-self: center; }
-    .sheet.modal { max-width: 480px; }
-    .grab { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
